@@ -22,7 +22,7 @@ class HomeController extends Controller
         }
         else if($usertype == '0')
         {
-            return view('dashboard');
+            return view('home.userpage');
         }
     }
 
