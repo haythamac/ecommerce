@@ -11178,6 +11178,10 @@ input[type="button"].btn-block {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem; }
 
+.collapse {
+  visibility: visible !important;
+}
+
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
