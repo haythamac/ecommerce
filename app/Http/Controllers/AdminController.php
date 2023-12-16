@@ -41,6 +41,11 @@ class AdminController extends Controller
         return view('admin.product', compact('category'));
     }
 
+    public function show_product()
+    {
+        $products = Product::all();
+        return view('admin.show-products', compact('products'));
+    }
     public function add_product(Request $request)
     {
         $data = new Product;
@@ -66,6 +71,21 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back()->with('message', 'Product added successfully');
+    }
+
+    public function delete_product($id)
+    {
+        $product = Product::find($id);
+
+        $product->delete();
+        return redirect()->back()->with('alert', 'Product deleted successfully');
+    }
+
+    public function update_product($id)
+    {
+        $product = Product::find($id);
+        $category = Category::all();
+        return view('admin.update-product', compact('product', 'category'));
     }
 
 }

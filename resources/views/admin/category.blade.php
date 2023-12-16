@@ -34,7 +34,7 @@
                         <input type="submit" class="btn btn-primary" name="submit" value="Add category">
                     </form>
 
-                    <table class="center ">
+                    <table class="center table">
                         <tr>
                             <td>Category name</td>
                             <td>Action</td>
