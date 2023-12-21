@@ -46,6 +46,6 @@ route::post('/edit_product/{id}', [AdminController::class, 'edit_product']);
 
 // Userpage
 route::get('/product_details/{id}', [HomeController::class, 'product_details']);
-route::get('/add_cart/{id}', [HomeController::class, 'add_cart']);
+route::post('/add_cart/{id}', [HomeController::class, 'add_cart']);
 
 
