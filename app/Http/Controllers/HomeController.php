@@ -36,7 +36,7 @@ class HomeController extends Controller
         return view('home.product-details', compact('product'));   
     }
 
-    public function add_cart($id)
+    public function add_cart(Request $request, $id)
     {
         if(Auth::id())
         {
@@ -51,17 +51,25 @@ class HomeController extends Controller
             $cart->user_id = $user->id;
 
             $cart->product_title = $product->title;
-            $cart->quantity = 1;
             $cart->image = $product->image;
             $cart->product_id = $product->id;
 
-            if($product->discount_price)
+            if($request->quantity)
             {
-                $cart->price = $product->discount_price;
+                $cart->quantity = $request->quantity;
             }
             else
             {
-                $cart->price = $product->price;
+                $cart->quantity = 1;
+            }
+
+            if($product->discount_price != null)
+            {
+                $cart->price = $product->discount_price * $cart->quantity;
+            }
+            else
+            {
+                $cart->price = $product->price * $cart->quantity;
             }
             
             $cart->save();
@@ -72,6 +80,11 @@ class HomeController extends Controller
         {
             return redirect('login');
         }
+    }
+
+    public function show_cart()
+    {
+        return view('home.show-cart');
     }
     
 }

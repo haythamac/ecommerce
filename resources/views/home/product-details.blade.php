@@ -100,7 +100,11 @@
                 <div class="product-quantity"><span class="product-tooltip">Quantity</span><span>{{ $product->quantity }}</span></div>
                 <div class="product-category"><span class="product-tooltip">Product Category</span><span>{{ $product->category }}</span></div>
                 <div class="product-description"><span class="product-tooltip">Product Description</span><span>{{ $product->description }}</span></div>
-                <a href="{{ url('') }}" class="btn btn-primary cart">Add to cart</a>
+                <form action="{{ url('add_cart', $product->id) }}" method="POST" style="display: flex; justify-content: space-between;">
+                    @csrf
+                    <input type="number" name="quantity" min="1" value="1" style="margin-left: 1rem; width: 100px;">
+                    <input type="submit" class="option2" value="Add to cart"></input>
+                </form>
             </div>
         </div>
     </div>

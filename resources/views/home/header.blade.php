@@ -28,7 +28,7 @@
                      <a class="nav-link" href="blog_list.html">Blog</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="contact.html">Contact</a>
+                     <a class="nav-link" href="{{ url('show_cart') }}>Cart</a>
                   </li>
 
                   <form class="form-inline">
