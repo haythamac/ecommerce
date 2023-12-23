@@ -29,6 +29,7 @@
         @include('home.header')
         {{-- header section ends --}}
 
+        <?php $totalPrice = 0; ?>
 
         <div style="margin: auto; width: 80%;">
             <table class="table table-striped">
@@ -37,16 +38,23 @@
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Image</th>
-                    <th>Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
+                @foreach ($cart as $item)
                 <tr>
-                    <td>a</td>
-                    <td>s</td>
-                    <td>d</td>
-                    <td>f</td>
-                    <td>g</td>
+                    <td>{{ $item->product_title }}</td>
+                    <td>{{ $item->quantity }}</td>
+                    <td>₱{{ $item->price }}</td>
+                    <td><img style="width: 64px; height: 64px;" src="/product/{{$item->image}}" alt="{{ $item->product_title }} image"></td>
+                    <td>Update</td>
+                    <td><a onclick="return confirm('Remove item?')" href="{{ url('remove_cart', $item->id) }}" class="btn btn-danger">Remove</a></td>
                 </tr>
+                <?php $totalPrice += $item->price; ?>
+                @endforeach
             </table>
+        </div>
+        <div class="center" style="width: 80%; margin: auto; font-size: 20px; color: red; font-weight: bold;">
+            Total price: ₱<?php echo $totalPrice; ?>
         </div>
     <!-- footer start -->
     @include('home.footer')
