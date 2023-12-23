@@ -27,7 +27,7 @@
          @include('home.header')
          {{-- header section ends --}}
       </div>
-      
+
       <!-- footer start -->
       @include('home.footer')
       <!-- footer end -->
